@@ -8,12 +8,12 @@ class RegistrationForm(FlaskForm):
     username=StringField('Username',validators=[DataRequired(),Length(min=2,max=20)])
     # email=StringField('Email',validators=[DataRequired(),Email()])
     email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
-    passward=PasswordField('Password',validators=[DataRequired()])
-    confirm_passward=PasswordField('Confirm Passward',validators=[DataRequired(),EqualTo('passward')])
+    password=PasswordField('Password',validators=[DataRequired()])
+    confirm_password=PasswordField('Confirm Password',validators=[DataRequired(),EqualTo('password')])
     submit=SubmitField('Sign Up')
 
 class LoginForm(FlaskForm):
     email=StringField('Email',validators=[DataRequired(),Email()])
-    passward=PasswordField('Password',validators=[DataRequired()])
+    password=PasswordField('Password',validators=[DataRequired()])
     remember=BooleanField('Remember Me')
     submit=SubmitField('Login')

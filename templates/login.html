@@ -19,16 +19,16 @@
                     {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.passward.label(class='form-control-label')}}
-                    {% if form.passward.errors %}
-                    {{form.passward(class='form-control form-control-lg is-invalid')}}    
+                    {{form.password.label(class='form-control-label')}}
+                    {% if form.password.errors %}
+                    {{form.password(class='form-control form-control-lg is-invalid')}}    
                     <div class='invalid-feedback'>
-                        {% for error in form.passward.errors %}
+                        {% for error in form.password.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                        {{form.passward(class='form-control form-control-lg')}}
+                        {{form.password(class='form-control form-control-lg')}}
                     {% endif %}
                 </div>
                 <div class='form-check'>
@@ -41,7 +41,7 @@
             </div>
         </form>
         <small class='text-muted ml-2'>
-            <a href=''>Forgot Passward?</a>
+            <a href=''>Forgot Password?</a>
         </small>
     </div>
     <div class='border-top pt-3'>

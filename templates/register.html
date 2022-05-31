@@ -32,29 +32,29 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{form.passward.label(class="form-control-label")}}
-                    {% if form.passward.errors %}
-                    {{form.passward(class="form-control form-control-lg is-invalid")}}    
+                    {{form.password.label(class="form-control-label")}}
+                    {% if form.password.errors %}
+                    {{form.password(class="form-control form-control-lg is-invalid")}}    
                     <div class="invalid-feedback">
-                        {% for error in form.passward.errors %}
+                        {% for error in form.password.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                        {{form.passward(class="form-control form-control-lg")}}
+                        {{form.password(class="form-control form-control-lg")}}
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{form.confirm_passward.label(class="form-control-label")}}
-                    {% if form.confirm_passward.errors %}
-                    {{form.confirm_passward(class="form-control form-control-lg is-invalid")}}    
+                    {{form.confirm_password.label(class="form-control-label")}}
+                    {% if form.confirm_password.errors %}
+                    {{form.confirm_password(class="form-control form-control-lg is-invalid")}}    
                     <div class="invalid-feedback">
-                        {% for error in form.confirm_passward.errors %}
+                        {% for error in form.confirm_password.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                        {{form.confirm_passward(class="form-control form-control-lg")}}
+                        {{form.confirm_password(class="form-control form-control-lg")}}
                     {% endif %}
                 </div>
             </fieldset>
