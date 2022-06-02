@@ -1,5 +1,15 @@
+import email
 from flask import Flask,render_template,url_for,flash,redirect
+from regex import E
+from requests import request
 from forms import RegistrationForm,LoginForm
+from pymongo import MongoClient
+
+client = MongoClient()
+client = MongoClient("mongodb://localhost:27017/")
+mydatabase = client.flaskData
+mycollection = mydatabase.userdata
+
 app = Flask(__name__)#set variable to flask __name__ is name of module
 
 app.config['SECRET_KEY']='5791628bb0b13ce0c676dfde280ba245'
@@ -47,11 +57,34 @@ def register():
 def login():
     form=LoginForm()
     if form.validate_on_submit():
-        if form.email.data=='admin@blog.com'and form.password.data=='password':
-            flash('You hava been logged in!','success')
-            return redirect(url_for('home'))
-        else:
-            flash('Login unsuccessful. Please check username and password','danger')
+        # if request.method == 'POST':
+        # if valid_login(request.form['username'],request.form['password']):
+        #     return log_the_user_in(request.form['username'])
+        # else:
+        #     error = 'Invalid username/password'
+
+        email=form['email']
+        user_password=form['password']
+        print(email,user_password)
+        user_data = mycollection.find_one({'email': email})
+        # u=user_data['password']
+        u=form.cleaned_data=("password", None)
+        print(u)
+        if user_data:
+            passs = mycollection.find_one({'password': user_password})
+            if user_password== passs:
+                flash('You hava been logged in!','success')
+                return redirect(url_for('home'))
+            else:
+                flash('Login unsuccessful. Please check username and password','danger')
+
+
+    # if form.validate_on_submit():
+    #     if form.email.data=='admin@blog.com'and form.password.data=='password':
+    #         flash('You hava been logged in!','success')
+    #         return redirect(url_for('home'))
+    #     else:
+    #         flash('Login unsuccessful. Please check username and password','danger')
     return render_template('login.html',title='Login',form=form)
 
 # if __name__=='__main__':
