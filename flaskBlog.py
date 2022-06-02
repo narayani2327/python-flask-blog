@@ -55,16 +55,12 @@ def register():
 def login():
     form=LoginForm()
     if form.validate_on_submit():
-        # if request.method == 'POST':
-        # if valid_login(request.form['username'],request.form['password']):
-        #     return log_the_user_in(request.form['username'])
-        # else:
-        #     error = 'Invalid username/password'
+        
 
         email=form.email.data
         user_password=form.password.data
         print(email,user_password)
-        user_data = mycollection.find_one({},{'email': email,'password':user_password})
+        user_data = mycollection.find_one({'email': email})
         print(user_data)
         if user_data:
                 flash('You hava been logged in!','success')
@@ -79,6 +75,12 @@ def login():
     #         return redirect(url_for('home'))
     #     else:
     #         flash('Login unsuccessful. Please check username and password','danger')
+
+    # if request.method == 'POST':
+        # if valid_login(request.form['username'],request.form['password']):
+        #     return log_the_user_in(request.form['username'])
+        # else:
+        #     error = 'Invalid username/password'
     return render_template('login.html',title='Login',form=form)
 
 # if __name__=='__main__':
