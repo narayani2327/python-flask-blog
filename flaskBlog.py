@@ -1,7 +1,5 @@
 import email
 from flask import Flask,render_template,url_for,flash,redirect
-from regex import E
-from requests import request
 from forms import RegistrationForm,LoginForm
 from pymongo import MongoClient
 
@@ -63,8 +61,9 @@ def login():
         # else:
         #     error = 'Invalid username/password'
 
-        email=form['email']
-        user_password=form['password']
+        email=form.email.data
+        user_password=form.password.data
+        print(type(email))
         print(email,user_password)
         user_data = mycollection.find_one({'email': email})
         # u=user_data['password']
